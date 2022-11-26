@@ -1,3 +1,3 @@
-# akashsonowal.github.io
+# Hi!
 
-Data and Applied Scientist
+I am Akash, ML Engineer / Applied Scientist. I love to work on generative, attention and convolution models. 
