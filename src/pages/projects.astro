@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Dynamic project list
+const projects = [
+  {
+    title: "Intelligent Document Processing Platform",
+    description: "Built an AI-powered document parsing pipeline capable of extracting structured data from millions of PDF files with 98% accuracy.",
+    technologies: ["Python", "PyTorch", "AWS Lambda", "OCR"],
+    year: "2025"
+  },
+  {
+    title: "Real-Time Recommendation Engine",
+    description: "Designed and deployed a large-scale recommendation system serving personalized results to over 10M users daily.",
+    technologies: ["Scala", "Apache Spark", "Kubernetes", "Redis"],
+    year: "2024"
+  },
+  {
+    title: "ML System at Scale",
+    description: "Developed a distributed ML pipeline for anomaly detection, processing billions of data points per day with sub-second latency.",
+    technologies: ["TensorFlow", "Kafka", "Flink", "AWS S3"],
+    year: "2023"
+  }
+];
+---
+
+<Layout title="Projects">
+  <section class="max-w-3xl py-12">
+    <header class="mb-12">
+      <p class="mt-4 text-lg text-gray-600">A selection of my professional and personal work, focusing on scalable, impactful solutions.</p>
+    </header>
+
+    <div class="space-y-8">
+      {projects.map(project => (
+        <div class="group border border-gray-200 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:border-gray-300 bg-white">
+          <div class="flex justify-between items-center mb-2">
+            <h2 class="text-2xl font-medium text-gray-900 group-hover:text-black">{project.title}</h2>
+            <span class="text-sm text-gray-500">{project.year}</span>
+          </div>
+          <p class="text-gray-600 mb-4">{project.description}</p>
+          <ul class="flex flex-wrap gap-2">
+            {project.technologies.map(tech => (
+              <li class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
