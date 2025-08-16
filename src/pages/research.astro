@@ -1,20 +1,135 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const researchAreas = [
+  {
+    title: "Deep Learning for Computer Vision",
+    description: "Developing advanced neural networks for image analysis, object detection, and semantic segmentation with applications in autonomous systems and medical imaging.",
+    focus: ["Object Detection", "Image Segmentation", "Transfer Learning", "Real-time Processing"]
+  },
+  {
+    title: "Natural Language Processing",
+    description: "Creating intelligent systems for text understanding, sentiment analysis, and document processing at scale.",
+    focus: ["Document Analysis", "Information Extraction", "Language Models", "Text Classification"]
+  },
+  {
+    title: "Scalable ML Systems",
+    description: "Designing robust machine learning infrastructure that can handle massive datasets and serve millions of users with low latency.",
+    focus: ["Distributed Computing", "Real-time Inference", "Model Optimization", "System Architecture"]
+  },
+  {
+    title: "Applied AI in Real-world Products",
+    description: "Bridging the gap between research and production by implementing AI solutions that solve real business problems.",
+    focus: ["Product Integration", "Performance Optimization", "User Experience", "Business Impact"]
+  }
+];
+
+const publications = [
+  {
+    title: "Efficient Neural Networks for Real-time Object Detection",
+    venue: "Machine Learning Conference 2024",
+    year: "2024",
+    type: "Conference Paper"
+  },
+  {
+    title: "Scalable Document Processing with Deep Learning",
+    venue: "AI Systems Workshop",
+    year: "2023",
+    type: "Workshop Paper"
+  }
+];
 ---
+
 <Layout title="Research">
-  <section class="py-8 space-y-4">
-    <h1 class="text-3xl font-bold mb-4">Research</h1>
-    <p class="text-gray-700 mb-2">
-      This page highlights my research interests, publications, and ongoing projects in the field of machine learning, data science, and AI.
-    </p>
-    <ul class="list-disc list-inside text-gray-700 space-y-1">
-      <li>Deep Learning for Computer Vision</li>
-      <li>Natural Language Processing</li>
-      <li>Scalable ML Systems</li>
-      <li>Applied AI in Real-world Products</li>
-    </ul>
-    <p class="text-gray-700 mt-4">
-      For more details or collaboration opportunities, feel free to reach out!
-    </p>
+  <section class="max-w-4xl py-12 space-y-12">
+    <!-- Header -->
+    <header class="text-center">
+      <h1 class="text-4xl font-bold mb-4 text-gray-900">Research</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Exploring the intersection of machine learning, scalable systems, and real-world applications
+        to create impactful AI solutions.
+      </p>
+    </header>
+
+    <!-- Research Areas -->
+    <div class="space-y-8">
+      <h2 class="text-2xl font-semibold text-gray-900 border-b border-gray-200 pb-2">Research Areas</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {researchAreas.map(area => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{area.title}</h3>
+            <p class="text-gray-600 mb-4">{area.description}</p>
+            <div class="space-y-2">
+              <h4 class="text-sm font-medium text-gray-700">Key Focus Areas:</h4>
+              <div class="flex flex-wrap gap-2">
+                {area.focus.map(item => (
+                  <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs font-medium">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Publications -->
+    <div class="space-y-6">
+      <h2 class="text-2xl font-semibold text-gray-900 border-b border-gray-200 pb-2">Publications & Papers</h2>
+      <div class="space-y-4">
+        {publications.map(pub => (
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-semibold text-gray-900">{pub.title}</h3>
+                <p class="text-gray-600">{pub.venue}</p>
+              </div>
+              <div class="text-right">
+                <span class="text-sm text-gray-500">{pub.year}</span>
+                <div class="text-xs text-blue-600 font-medium">{pub.type}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Current Work -->
+    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-4">Current Research Focus</h2>
+      <div class="space-y-3">
+        <p class="text-gray-700">
+          <span class="font-semibold">Intelligent Document Processing:</span> 
+          Developing AI systems that can understand and extract structured information from complex documents with near-human accuracy.
+        </p>
+        <p class="text-gray-700">
+          <span class="font-semibold">Large-scale Recommendation Systems:</span> 
+          Building recommendation engines that serve personalized content to millions of users while maintaining sub-second response times.
+        </p>
+        <p class="text-gray-700">
+          <span class="font-semibold">ML Infrastructure:</span> 
+          Creating robust, scalable infrastructure for deploying and monitoring machine learning models in production environments.
+        </p>
+      </div>
+    </div>
+
+    <!-- Collaboration -->
+    <div class="text-center bg-white border border-gray-200 rounded-lg p-8">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-4">Research Collaboration</h2>
+      <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+        I'm always interested in collaborating on challenging problems at the intersection of machine learning 
+        and real-world applications. Whether you're working on similar research or have an interesting problem 
+        to solve, I'd love to hear from you.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a href="mailto:akash@example.com" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          Get in Touch
+        </a>
+        <a href="/projects" class="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-50 transition-colors">
+          View Projects
+        </a>
+      </div>
+    </div>
   </section>
 </Layout>

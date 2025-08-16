@@ -35,29 +35,40 @@ const posts: Post[] = [
 ---
 
 <Layout title="Blog">
-  <section class="max-w-3xl mx-auto px-4 py-12">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Header -->
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4 text-gray-900">Blog</h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Thoughts on technology, machine learning, and building better software systems.
+      </p>
+    </header>
+
     <div class="space-y-12">
       {posts.map((post, index) => (
-        <article class="group transition-colors duration-200 border-b border-gray-200 pb-4 hover:border-gray-400">
-          <header>
-            <time class="text-sm text-gray-500">{post.date} • {post.readingTime}</time>
-            <h2 class="mt-2 text-2xl font-medium text-gray-900 group-hover:text-black">
+        <article class="group bg-white border border-gray-200 rounded-lg p-8 transition-all duration-300 hover:shadow-lg hover:border-gray-300">
+          <header class="mb-4">
+            <time class="text-sm text-blue-600 font-medium">{post.date} • {post.readingTime}</time>
+            <h2 class="mt-2 text-2xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
               {post.title}
             </h2>
           </header>
-          <p class="text-gray-600">{post.description}</p>
+          <p class="text-gray-600 mb-4 leading-relaxed">{post.description}</p>
           
           <!-- Expandable content div -->
-          <div id={`content-${index}`} class="hidden mt-4 p-4 bg-gray-50 rounded-lg border-l-4 border-blue-500">
-            <p class="text-gray-700 leading-relaxed">{post.content}</p>
+          <div id={`content-${index}`} class="hidden mt-6 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+            <p class="text-gray-800 leading-relaxed">{post.content}</p>
           </div>
           
           <button 
             onclick={`toggleContent(${index})`}
             id={`btn-${index}`}
-            class="inline-block mt-4 text-sm font-medium text-gray-800 group-hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded"
+            class="inline-flex items-center gap-2 mt-4 px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
-            Read more →
+            <span>Read more</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
           </button>
         </article>
       ))}
@@ -73,11 +84,25 @@ const posts: Post[] = [
     if (contentDiv && contentDiv.classList.contains('hidden')) {
       contentDiv.classList.remove('hidden');
       contentDiv.classList.add('animate-fade-in');
-      if (button) button.textContent = 'Read less ←';
+      if (button) {
+        button.innerHTML = `
+          <span>Read less</span>
+          <svg class="w-4 h-4 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        `;
+      }
     } else if (contentDiv) {
       contentDiv.classList.add('hidden');
       contentDiv.classList.remove('animate-fade-in');
-      if (button) button.textContent = 'Read more →';
+      if (button) {
+        button.innerHTML = `
+          <span>Read more</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        `;
+      }
     }
   }
 
